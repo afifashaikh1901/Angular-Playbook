@@ -1,0 +1,33 @@
+<div class="row">
+
+  <div class="container">
+    <div class="left pane">
+      <h2>Slides</h2>
+      <div cdkDropList #PaintList="cdkDropList" [cdkDropListData]="Paint" [cdkDropListConnectedTo]="[playareaList]"
+        class="list" (cdkDropListDropped)="onDrop($event)">
+        <div class="box" *ngFor="let item of Paint" [ngClass]="item.highlight ? item.Name: '' " cdkDrag>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="middle pane">
+      <h2>playarea</h2>
+      <div cdkDropList #playareaList="cdkDropList" [cdkDropListData]="playarea" [cdkDropListConnectedTo]="[PaintList]"
+        class="list" (cdkDropListDropped)="onDrop($event)">
+        <div class="box" *ngFor="let item of playarea" [ngClass]="item.highlight ? item.Name: ' ' " cdkDrag>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="right pane">
+        <h2>Sketches</h2>
+        <div class="box1" *ngFor="let item of drawings" [ngClass]="item.highlight ?  item.Name: '' " cdkDrag>
+          <img src="{{item.url}}">
+        </div>
+      </div>
+    </div>
+  </div>
